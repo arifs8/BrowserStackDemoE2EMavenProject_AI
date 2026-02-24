@@ -1,6 +1,35 @@
 # Test Cases - BrowserStack Demo E-Commerce
 
-This document outlines 10 critical test scenarios for the BrowserStack Demo application, designed by a Senior QA Automation Lead (15+ years experience) using the **RICE POT** framework.
+## 🚀 The AI Prompt (Test Case Generation)
+
+This test suite was generated using the following expert-level prompt based on the **RICE POT** framework:
+
+> **Role:** You are a QA automation tester with 15 years of experience. You have a very good understanding of IT experience in functional testing, security testing, and performance testing.
+>
+> **CONTEXT:**
+> - **Application:** E-Commerce website - https://www.bstackdemo.com/
+> - **Login Method:** Email, Password and Submit
+> - **Features:** Remember me check, Forgot password link, create a free account.
+> - **Validation:** Email must be valid, if not valid error message shown and also add to cart product
+>
+> **Task:** Generate exactly 10 Testcases covering:
+> - 3 positive scenarios (successful login)
+> - 5 negative scenarios (validation errors)
+> - 1 security scenario (sql injection, brute force)
+> - 1 performance-related scenario
+>
+> **CONSTRAINTS:**
+> - Use Only the features mentioned above.
+> - [DON'T] Assume password complexity
+> - [DON'T] invent error messages
+> - Mark any assumptions as "[ASSUMPTION]"
+> - If information is missing, state "Not specified"
+>
+> **OUTPUT FORMAT:** TABLE VIEW | TC_ID | Category | Description | Pre-condition | Steps | Expected Result | Priority |
+>
+> Use TC_001, TC_002, etc. for IDs. Priority: High / Medium / Low
+
+---
 
 ## 📝 Test Case Suite
 
