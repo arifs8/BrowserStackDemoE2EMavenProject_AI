@@ -16,6 +16,9 @@ This document outlines 10 critical test scenarios for the BrowserStack Demo appl
 | **TC_008** | Negative (Validation) | Login attempt with non-existent email/username. | Browser is open at the login page. | 1. Enter a non-registered email 2. Enter any password 3. Click Log In | Error message shown: "User does not exist" or similar. | Medium |
 | **TC_009** | Security | Brute force protection check (Multiple failed attempts). | Account is in a normal state. | 1. Perform 10 consecutive login attempts with wrong passwords | [ASSUMPTION] Account is temporarily locked or CAPTCHA is triggered. | High |
 | **TC_010** | Performance | Login response time under standard network conditions. | Stable internet connection. | 1. Enter valid credentials 2. Click Log In 3. Measure time until Dashboard is interactive | Login process should complete within 2 seconds. | Medium |
+| **TC_011** | Positive (Cart) | Add multiple products and verify cart count. | User is logged in. | 1. Add 'iPhone 12 Mini' 2. Add 'Pixel 3' | Cart counter displays '2'. | High |
+| **TC_012** | Positive (Cart) | Remove an item from the cart. | At least one item in the cart. | 1. Open Cart 2. Click 'X' (Remove) next to the product | Product is removed and cart count decrements. | High |
+| **TC_013** | Positive (Cart) | Verify cart persistence after logout. | User has items in cart. | 1. Log out 2. Log back in | Cart still contains previously added items. | High |
 
 ---
 

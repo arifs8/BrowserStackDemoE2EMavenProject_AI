@@ -45,6 +45,18 @@ public class LoginPage {
     @FindBy(xpath = "//p[text()='iPhone 12 Mini']/following-sibling::div[text()='Add to cart']")
     private WebElement addToCartIPhone12Mini;
 
+    @FindBy(xpath = "//p[text()='Pixel 3']/following-sibling::div[text()='Add to cart']")
+    private WebElement addToCartPixel3;
+
+    @FindBy(xpath = "//span[@class='bag__quantity']")
+    private WebElement cartQuantity;
+
+    @FindBy(xpath = "//div[@class='shelf-item__del']")
+    private WebElement removeProductButton;
+
+    @FindBy(xpath = "//a[text()='Logout']")
+    private WebElement logoutLink;
+
     public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -77,6 +89,27 @@ public class LoginPage {
         } catch (Exception e) {
             throw new Exception("Product Add to Cart failed: " + e.getMessage());
         }
+    }
+
+    public void addPixelToCart() throws Exception {
+        try {
+            wait.until(ExpectedConditions.elementToBeClickable(addToCartPixel3)).click();
+        } catch (Exception e) {
+            throw new Exception("Product Add to Cart failed: " + e.getMessage());
+        }
+    }
+
+    public int getCartQuantity() {
+        String count = wait.until(ExpectedConditions.visibilityOf(cartQuantity)).getText();
+        return Integer.parseInt(count);
+    }
+
+    public void removeProduct() {
+        wait.until(ExpectedConditions.elementToBeClickable(removeProductButton)).click();
+    }
+
+    public void logout() {
+        wait.until(ExpectedConditions.elementToBeClickable(logoutLink)).click();
     }
 
     public void clickRememberMe() {
