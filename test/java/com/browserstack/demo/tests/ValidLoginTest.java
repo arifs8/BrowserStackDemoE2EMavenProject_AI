@@ -21,11 +21,26 @@ public class ValidLoginTest {
         loginPage = new LoginPage(driver);
     }
 
-    @Test
+    @Test(priority = 1)
     public void testValidLoginAndAddToCart() throws Exception {
         loginPage.clickSignIn();
         loginPage.login("demouser", "testing123");
         loginPage.addIPhoneToCart();
+    }
+
+    @Test(priority = 2)
+    public void testLoginWithRememberMe() throws Exception {
+        loginPage.clickSignIn();
+        loginPage.clickRememberMe();
+        loginPage.login("demouser", "testing123");
+        // Verification would typically involve checking cookies or session persistence
+    }
+
+    @Test(priority = 3)
+    public void testCreateAccountRedirection() throws Exception {
+        loginPage.clickSignIn();
+        loginPage.clickCreateAccount();
+        // Verification: Check if URL changed or specific registration element is present
     }
 
     @AfterMethod

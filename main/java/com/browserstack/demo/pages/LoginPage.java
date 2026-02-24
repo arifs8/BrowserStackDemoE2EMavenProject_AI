@@ -33,6 +33,15 @@ public class LoginPage {
     @FindBy(xpath = "//*[contains(@class, 'api-error')]")
     private WebElement errorMessage;
 
+    @FindBy(xpath = "//input[@type='checkbox']")
+    private WebElement rememberMeCheckbox;
+
+    @FindBy(xpath = "//*[contains(text(),'Forgot password')]")
+    private WebElement forgotPasswordLink;
+
+    @FindBy(xpath = "//*[contains(text(),'Create a free account')]")
+    private WebElement createAccountLink;
+
     @FindBy(xpath = "//p[text()='iPhone 12 Mini']/following-sibling::div[text()='Add to cart']")
     private WebElement addToCartIPhone12Mini;
 
@@ -68,6 +77,20 @@ public class LoginPage {
         } catch (Exception e) {
             throw new Exception("Product Add to Cart failed: " + e.getMessage());
         }
+    }
+
+    public void clickRememberMe() {
+        if (!rememberMeCheckbox.isSelected()) {
+            rememberMeCheckbox.click();
+        }
+    }
+
+    public void clickForgotPassword() {
+        wait.until(ExpectedConditions.elementToBeClickable(forgotPasswordLink)).click();
+    }
+
+    public void clickCreateAccount() {
+        wait.until(ExpectedConditions.elementToBeClickable(createAccountLink)).click();
     }
 
     public String getErrorMessage() {

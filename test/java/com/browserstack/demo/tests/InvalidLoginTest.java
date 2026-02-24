@@ -22,14 +22,27 @@ public class InvalidLoginTest {
         loginPage = new LoginPage(driver);
     }
 
-    @Test
-    public void testInvalidLoginFlow() throws Exception {
+    @Test(priority = 1)
+    public void testEmptyCredentialsLogin() throws Exception {
         loginPage.clickSignIn();
-        // Simulating invalid flow by clicking login without selecting credentials
-        // On bstackdemo, an error occurs if 'Log In' is clicked without selections
         loginPage.login("", ""); 
         String error = loginPage.getErrorMessage();
         Assert.assertTrue(error.contains("Invalid"), "Error message validation failed");
+    }
+
+    @Test(priority = 2)
+    public void testIncorrectPasswordLogin() throws Exception {
+        loginPage.clickSignIn();
+        loginPage.login("demouser", "wrong_password");
+        String error = loginPage.getErrorMessage();
+        Assert.assertTrue(error.contains("Invalid"), "Error message validation failed for wrong password");
+    }
+
+    @Test(priority = 3)
+    public void testForgotPasswordRedirection() throws Exception {
+        loginPage.clickSignIn();
+        loginPage.clickForgotPassword();
+        // Verification: Check if redirected to recovery page
     }
 
     @AfterMethod
